@@ -8,7 +8,7 @@ const FinalCTASection: React.FC = () => {
   return (
     <AnimatedSection className="py-16 md:py-24 bg-accent dark:bg-dark-accent text-accent-foreground dark:text-dark-accent-foreground">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <h2 className="text-3xl md:text-4xl font-bold mb-6">\Siap Memulai Proyek Bersama Kami?</h2>
+        <h2 className="text-3xl md:text-4xl font-bold mb-6">Siap Memulai Proyek Bersama Kami?</h2>
         <p className="text-lg md:text-xl mb-10 max-w-2xl mx-auto">
           Wujudkan visi arsitektur Anda bersama tim profesional kami. Hubungi kami untuk konsultasi gratis.
         </p>
