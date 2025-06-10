@@ -1,5 +1,6 @@
 "use client";
 
+import React from 'react'; // Added explicit React import
 import { MapPin, Mail, Phone } from 'lucide-react';
 
 const ContactInfo: React.FC = () => {
@@ -9,7 +10,8 @@ const ContactInfo: React.FC = () => {
         <MapPin size={24} className="text-accent dark:text-dark-accent mr-4 mt-1 flex-shrink-0" />
         <div>
           <h4 className="font-semibold text-lg text-foreground dark:text-dark-foreground">Alamat Kantor</h4>
-          <p>Jl. Arsitektur No. 123, Kota Imajinasi,</n          <br />Indonesia, 40100</p>
+          <p>Jl. Arsitektur No. 123, Kota Imajinasi,
+          <br />Indonesia, 40100</p>
         </div>
       </div>
       <div className="flex items-start">
