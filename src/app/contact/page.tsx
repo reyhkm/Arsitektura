@@ -1,3 +1,5 @@
+"use client";
+
 import type { Metadata } from 'next';
 import ContactInfo from '@/components/sections/contact/ContactInfo';
 import ContactForm from '@/components/sections/contact/ContactForm';
@@ -7,10 +9,10 @@ import AnimatedSection from '@/components/ui/AnimatedSection';
 import { motion } from 'framer-motion';
 import { pageTransitionVariants } from '@/lib/motion';
 
-export const metadata: Metadata = {
-  title: 'Hubungi Kami',
-  description: 'Hubungi Arkitektura Digital untuk pertanyaan, konsultasi, atau memulai proyek baru Anda.',
-};
+// export const metadata: Metadata = {
+//   title: 'Hubungi Kami',
+//   description: 'Hubungi Arkitektura Digital untuk pertanyaan, konsultasi, atau memulai proyek baru Anda.',
+// };
 
 export default function ContactPage() {
   // Example coordinates for the map
