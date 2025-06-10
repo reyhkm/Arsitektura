@@ -4,7 +4,7 @@ import './globals.css';
 import { ThemeProvider } from '@/providers/ThemeProvider';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
-import { AnimatePresence } from 'framer-motion';
+import PageAnimator from '@/components/layout/PageAnimator';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-sans' });
 const lora = Lora({ subsets: ['latin'], variable: '--font-serif', weight: ['400', '700'] });
@@ -52,11 +52,11 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <Header />
-          <AnimatePresence mode="wait" initial={false}>
+          <PageAnimator>
             <main className="min-h-screen pt-16 md:pt-20"> {/* Adjust pt based on header height */}
               {children}
             </main>
-          </AnimatePresence>
+          </PageAnimator>
           <Footer />
         </ThemeProvider>
       </body>
