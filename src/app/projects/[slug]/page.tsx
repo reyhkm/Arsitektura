@@ -8,10 +8,12 @@ import type { Project } from '@/lib/types';
 import SectionTitle from '@/components/ui/SectionTitle';
 import Button from '@/components/ui/Button';
 import Lightbox from '@/components/ui/Lightbox'; // Simple lightbox component
-import AnimatedSection from '@/components/ui/AnimatedSection'; // Added import
+import AnimatedSection from '@/components/ui/AnimatedSection';
 import { motion } from 'framer-motion';
 import { pageTransitionVariants, fadeIn } from '@/lib/motion';
 import { ArrowLeft, ArrowRight, MapPin, CalendarDays, Maximize, Square, Users, Info } from 'lucide-react';
+
+export const runtime = 'edge'; // Added for Cloudflare Pages Edge Runtime compatibility
 
 // This function could be used for generateStaticParams if not fetching client-side
 // export async function generateStaticParams() {
