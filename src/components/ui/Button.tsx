@@ -13,16 +13,16 @@ interface BaseButtonProps {
 }
 
 // Props for when the component is a button
-// Omit 'onDrag' (and potentially other conflicting props if errors arise for them)
-// from React.ButtonHTMLAttributes to prevent type clashes with Framer Motion's gesture handlers.
-interface ActualButtonProps extends BaseButtonProps, Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'onDrag'> {
+// Omit 'onDrag' and 'children' from React.ButtonHTMLAttributes 
+// to prevent type clashes with Framer Motion's gesture handlers and ensure 'children' comes from BaseButtonProps.
+interface ActualButtonProps extends BaseButtonProps, Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'onDrag' | 'children'> {
   asLink?: false;
   href?: never;
 }
 
 // Props for when the component is a link
-// Omit 'onDrag' similarly for anchor tags if it were to be an issue.
-interface LinkButtonProps extends BaseButtonProps, Omit<React.AnchorHTMLAttributes<HTMLAnchorElement>, 'onDrag'> {
+// Omit 'onDrag' and 'children' similarly for anchor tags.
+interface LinkButtonProps extends BaseButtonProps, Omit<React.AnchorHTMLAttributes<HTMLAnchorElement>, 'onDrag' | 'children'> {
   asLink: true;
   href: string;
 }
@@ -49,7 +49,7 @@ const Button: React.FC<ButtonProps> = (props) => {
 
   const combinedClassName = `${baseStyles} ${variantStyles[variant]} ${sizeStyles[size]} ${className}`;
 
-  const fmMotionProps = { // Renamed to avoid conflict with the 'props' argument
+  const fmMotionProps: HTMLMotionProps<any> = { // Use 'any' for TagName as it's dynamic or ensure specific types if needed
     whileHover: { scale: 1.05 },
     whileTap: { scale: 0.95 },
   };
