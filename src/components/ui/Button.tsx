@@ -37,7 +37,7 @@ const Button: React.FC<ButtonProps> = (props) => {
   const variantStyles = {
     primary: 'bg-accent text-accent-foreground hover:bg-accent/90 focus:ring-accent',
     secondary: 'bg-primary-foreground text-primary dark:bg-dark-primary-foreground dark:text-dark-primary hover:bg-primary-foreground/90 dark:hover:bg-dark-primary-foreground/90 focus:ring-primary-foreground',
-    outline: 'border border-accent text-accent hover:bg-accent hover:text-accent-foreground focus:ring-accent',
+    outline: 'ring-1 ring-inset ring-accent text-accent hover:bg-accent hover:text-accent-foreground focus:ring-accent dark:ring-dark-accent',
     ghost: 'hover:bg-accent/10 text-accent focus:ring-accent',
   };
 
