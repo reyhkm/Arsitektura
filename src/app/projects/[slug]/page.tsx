@@ -8,6 +8,7 @@ import type { Project } from '@/lib/types';
 import SectionTitle from '@/components/ui/SectionTitle';
 import Button from '@/components/ui/Button';
 import Lightbox from '@/components/ui/Lightbox'; // Simple lightbox component
+import AnimatedSection from '@/components/ui/AnimatedSection'; // Added import
 import { motion } from 'framer-motion';
 import { pageTransitionVariants, fadeIn } from '@/lib/motion';
 import { ArrowLeft, ArrowRight, MapPin, CalendarDays, Maximize, Square, Users, Info } from 'lucide-react';
