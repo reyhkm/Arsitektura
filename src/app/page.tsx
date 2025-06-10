@@ -1,3 +1,5 @@
+"use client";
+
 import type { Metadata } from 'next';
 import HeroSection from '@/components/sections/home/HeroSection';
 import AboutShortSection from '@/components/sections/home/AboutShortSection';
@@ -8,10 +10,10 @@ import FinalCTASection from '@/components/sections/home/FinalCTASection';
 import { motion } from 'framer-motion';
 import { pageTransitionVariants } from '@/lib/motion';
 
-export const metadata: Metadata = {
-  title: 'Beranda',
-  description: 'Arkitektura Digital - Merancang Masa Depan Ruang Hidup. Studio arsitektur modern yang berfokus pada desain inovatif dan berkelanjutan.',
-};
+// export const metadata: Metadata = { // Metadata should be handled in layout or generated dynamically for client components if needed
+//   title: 'Beranda',
+//   description: 'Arkitektura Digital - Merancang Masa Depan Ruang Hidup. Studio arsitektur modern yang berfokus pada desain inovatif dan berkelanjutan.',
+// };
 
 export default function HomePage() {
   return (
