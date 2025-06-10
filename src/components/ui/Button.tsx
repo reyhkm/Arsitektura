@@ -13,9 +13,9 @@ interface BaseButtonProps {
 }
 
 // Props for when the component is a button
-// Omit 'onDrag', 'children', and 'onAnimationStart' from React.ButtonHTMLAttributes 
+// Omit 'onDrag', 'children', 'onAnimationStart', and 'onDragEnd' from React.ButtonHTMLAttributes 
 // to prevent type clashes with Framer Motion's gesture handlers and ensure 'children' comes from BaseButtonProps.
-interface ActualButtonProps extends BaseButtonProps, Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'onDrag' | 'children' | 'onAnimationStart'> {
+interface ActualButtonProps extends BaseButtonProps, Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'onDrag' | 'children' | 'onAnimationStart' | 'onDragEnd'> {
   asLink?: false;
   href?: never;
 }
