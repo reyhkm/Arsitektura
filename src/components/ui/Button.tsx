@@ -21,8 +21,8 @@ interface ActualButtonProps extends BaseButtonProps, Omit<React.ButtonHTMLAttrib
 }
 
 // Props for when the component is a link
-// Omit 'onDrag', 'onDragEnd', and 'children' similarly for anchor tags.
-interface LinkButtonProps extends BaseButtonProps, Omit<React.AnchorHTMLAttributes<HTMLAnchorElement>, 'onDrag' | 'onDragEnd' | 'children'> {
+// Omit 'onDrag', 'onDragEnd', 'onDragStart' and 'children' similarly for anchor tags.
+interface LinkButtonProps extends BaseButtonProps, Omit<React.AnchorHTMLAttributes<HTMLAnchorElement>, 'onDrag' | 'onDragEnd' | 'onDragStart' | 'children'> {
   asLink: true;
   href: string;
 }
