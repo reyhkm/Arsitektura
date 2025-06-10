@@ -3,11 +3,18 @@
 import type { Metadata } from 'next';
 import ContactInfo from '@/components/sections/contact/ContactInfo';
 import ContactForm from '@/components/sections/contact/ContactForm';
-import InteractiveMap from '@/components/sections/contact/InteractiveMap';
+// import InteractiveMap from '@/components/sections/contact/InteractiveMap'; // Original import
 import SectionTitle from '@/components/ui/SectionTitle';
 import AnimatedSection from '@/components/ui/AnimatedSection';
 import { motion } from 'framer-motion';
 import { pageTransitionVariants } from '@/lib/motion';
+import dynamic from 'next/dynamic';
+
+// Dynamically import InteractiveMap with SSR turned off
+const InteractiveMap = dynamic(() => import('@/components/sections/contact/InteractiveMap'), {
+  ssr: false,
+  loading: () => <div className="h-[400px] w-full bg-gray-200 dark:bg-gray-700 flex items-center justify-center text-gray-500">Memuat peta...</div>
+});
 
 // export const metadata: Metadata = {
 //   title: 'Hubungi Kami',
