@@ -1,27 +1,37 @@
 "use client";
 
-import { motion } from 'framer-motion';
+import { motion, HTMLMotionProps } from 'framer-motion';
 import Link from 'next/link';
 import React from 'react';
 
-interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+// Base props common to both button and link
+interface BaseButtonProps {
   variant?: 'primary' | 'secondary' | 'outline' | 'ghost';
   size?: 'sm' | 'md' | 'lg';
-  asLink?: boolean;
-  href?: string;
   children: React.ReactNode;
   className?: string;
 }
 
-const Button: React.FC<ButtonProps> = ({
-  variant = 'primary',
-  size = 'md',
-  asLink = false,
-  href,
-  children,
-  className = '',
-  ...props
-}) => {
+// Props for when the component is a button
+// Omit 'onDrag' (and potentially other conflicting props if errors arise for them)
+// from React.ButtonHTMLAttributes to prevent type clashes with Framer Motion's gesture handlers.
+interface ActualButtonProps extends BaseButtonProps, Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'onDrag'> {
+  asLink?: false;
+  href?: never;
+}
+
+// Props for when the component is a link
+// Omit 'onDrag' similarly for anchor tags if it were to be an issue.
+interface LinkButtonProps extends BaseButtonProps, Omit<React.AnchorHTMLAttributes<HTMLAnchorElement>, 'onDrag'> {
+  asLink: true;
+  href: string;
+}
+
+type ButtonProps = ActualButtonProps | LinkButtonProps;
+
+const Button: React.FC<ButtonProps> = (props) => {
+  const { variant = 'primary', size = 'md', children, className = '' } = props;
+
   const baseStyles = 'font-semibold rounded-md transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 dark:focus:ring-offset-dark-background';
   
   const variantStyles = {
@@ -39,26 +49,30 @@ const Button: React.FC<ButtonProps> = ({
 
   const combinedClassName = `${baseStyles} ${variantStyles[variant]} ${sizeStyles[size]} ${className}`;
 
-  const motionProps = {
+  const fmMotionProps = { // Renamed to avoid conflict with the 'props' argument
     whileHover: { scale: 1.05 },
     whileTap: { scale: 0.95 },
   };
 
-  if (asLink && href) {
+  if (props.asLink) {
+    // Type guard ensures props is LinkButtonProps here
+    const { asLink, href, variant: _variant, size: _size, children: _children, className: _className, ...anchorProps } = props;
     return (
       <Link href={href} passHref legacyBehavior>
-        <motion.a {...motionProps} className={combinedClassName}>
+        <motion.a {...fmMotionProps} className={combinedClassName} {...anchorProps}>
           {children}
         </motion.a>
       </Link>
     );
+  } else {
+    // Type guard ensures props is ActualButtonProps here
+    const { asLink, variant: _variant, size: _size, children: _children, className: _className, ...buttonProps } = props;
+    return (
+      <motion.button {...fmMotionProps} className={combinedClassName} {...buttonProps}>
+        {children}
+      </motion.button>
+    );
   }
-
-  return (
-    <motion.button {...motionProps} className={combinedClassName} {...props}>
-      {children}
-    </motion.button>
-  );
 };
 
 export default Button;
