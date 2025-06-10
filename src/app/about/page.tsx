@@ -1,3 +1,5 @@
+"use client";
+
 import type { Metadata } from 'next';
 import VisionMissionSection from '@/components/sections/about/VisionMissionSection';
 import HistoryTimeline from '@/components/sections/about/HistoryTimeline';
@@ -7,10 +9,10 @@ import SectionTitle from '@/components/ui/SectionTitle';
 import { motion } from 'framer-motion';
 import { pageTransitionVariants } from '@/lib/motion';
 
-export const metadata: Metadata = {
-  title: 'Tentang Kami',
-  description: 'Pelajari lebih lanjut tentang Arkitektura Digital, filosofi, sejarah, dan tim profesional kami.',
-};
+// export const metadata: Metadata = {
+//   title: 'Tentang Kami',
+//   description: 'Pelajari lebih lanjut tentang Arkitektura Digital, filosofi, sejarah, dan tim profesional kami.',
+// };
 
 export default function AboutPage() {
   return (
