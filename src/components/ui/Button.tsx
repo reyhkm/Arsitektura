@@ -32,7 +32,7 @@ type ButtonProps = ActualButtonProps | LinkButtonProps;
 const Button: React.FC<ButtonProps> = (props) => {
   const { variant = 'primary', size = 'md', children, className = '' } = props;
 
-  const baseStyles = 'font-semibold rounded-md transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 dark:focus:ring-offset-dark-background';
+  const baseStyles = 'inline-flex items-center justify-center gap-2 font-semibold rounded-md transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 dark:focus:ring-offset-dark-background';
   
   const variantStyles = {
     primary: 'bg-accent text-accent-foreground hover:bg-accent/90 focus:ring-accent',
