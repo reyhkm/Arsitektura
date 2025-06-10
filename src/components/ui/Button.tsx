@@ -12,17 +12,17 @@ interface BaseButtonProps {
   className?: string;
 }
 
+// Props to omit from standard HTML attributes to avoid conflicts with Framer Motion
+type PropsToOmit = 'children' | 'onDrag' | 'onDragEnd' | 'onDragStart' | 'onAnimationStart' | 'onAnimationEnd' | 'onAnimationIteration';
+
 // Props for when the component is a button
-// Omit 'onDrag', 'children', 'onAnimationStart', and 'onDragEnd' from React.ButtonHTMLAttributes 
-// to prevent type clashes with Framer Motion's gesture handlers and ensure 'children' comes from BaseButtonProps.
-interface ActualButtonProps extends BaseButtonProps, Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'onDrag' | 'children' | 'onAnimationStart' | 'onDragEnd'> {
+interface ActualButtonProps extends BaseButtonProps, Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, PropsToOmit> {
   asLink?: false;
   href?: never;
 }
 
 // Props for when the component is a link
-// Omit 'onDrag', 'onDragEnd', 'onDragStart', 'children', and 'onAnimationStart' similarly for anchor tags.
-interface LinkButtonProps extends BaseButtonProps, Omit<React.AnchorHTMLAttributes<HTMLAnchorElement>, 'onDrag' | 'onDragEnd' | 'onDragStart' | 'children' | 'onAnimationStart'> {
+interface LinkButtonProps extends BaseButtonProps, Omit<React.AnchorHTMLAttributes<HTMLAnchorElement>, PropsToOmit> {
   asLink: true;
   href: string;
 }
@@ -49,13 +49,12 @@ const Button: React.FC<ButtonProps> = (props) => {
 
   const combinedClassName = `${baseStyles} ${variantStyles[variant]} ${sizeStyles[size]} ${className}`;
 
-  const fmMotionProps: HTMLMotionProps<any> = { // Use 'any' for TagName as it's dynamic or ensure specific types if needed
+  const fmMotionProps: HTMLMotionProps<any> = { 
     whileHover: { scale: 1.05 },
     whileTap: { scale: 0.95 },
   };
 
   if (props.asLink) {
-    // Type guard ensures props is LinkButtonProps here
     const { asLink, href, variant: _variant, size: _size, children: _children, className: _className, ...anchorProps } = props;
     return (
       <Link href={href} passHref legacyBehavior>
@@ -65,7 +64,6 @@ const Button: React.FC<ButtonProps> = (props) => {
       </Link>
     );
   } else {
-    // Type guard ensures props is ActualButtonProps here
     const { asLink, variant: _variant, size: _size, children: _children, className: _className, ...buttonProps } = props;
     return (
       <motion.button {...fmMotionProps} className={combinedClassName} {...buttonProps}>
