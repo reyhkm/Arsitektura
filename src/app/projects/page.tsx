@@ -1,12 +1,14 @@
+"use client";
+
 import type { Metadata } from 'next';
 import ProjectGallery from '@/components/sections/projects/ProjectGallery';
 import { motion } from 'framer-motion';
 import { pageTransitionVariants } from '@/lib/motion';
 
-export const metadata: Metadata = {
-  title: 'Proyek Kami',
-  description: 'Jelajahi portofolio proyek arsitektur, desain interior, dan visualisasi 3D dari Arkitektura Digital.',
-};
+// export const metadata: Metadata = {
+//   title: 'Proyek Kami',
+//   description: 'Jelajahi portofolio proyek arsitektur, desain interior, dan visualisasi 3D dari Arkitektura Digital.',
+// };
 
 export default function ProjectsPage() {
   return (
