@@ -3,7 +3,8 @@
 import { useEffect, useState } from 'react';
 import { useParams, useRouter } from 'next/navigation';
 import Image from 'next/image';
-import { Project, projectsData, getProjectBySlug, getPrevNextProjects } from '@/lib/data';
+import { projectsData, getProjectBySlug, getPrevNextProjects } from '@/lib/data';
+import type { Project } from '@/lib/types';
 import SectionTitle from '@/components/ui/SectionTitle';
 import Button from '@/components/ui/Button';
 import Lightbox from '@/components/ui/Lightbox'; // Simple lightbox component
