@@ -1,14 +1,15 @@
 "use client";
 
-import type { Metadata } from 'next';
-import HeroSection from '@/components/sections/home/HeroSection';
-import AboutShortSection from '@/components/sections/home/AboutShortSection';
-import FeaturedServicesSection from '@/components/sections/home/FeaturedServicesSection';
-import FeaturedProjectsSection from '@/components/sections/home/FeaturedProjectsSection';
-import TestimonialsSection from '@/components/sections/home/TestimonialsSection';
-import FinalCTASection from '@/components/sections/home/FinalCTASection';
 import { motion } from 'framer-motion';
 import { pageTransitionVariants } from '@/lib/motion';
+import dynamic from 'next/dynamic';
+
+const HeroSection = dynamic(() => import('@/components/sections/home/HeroSection'));
+const AboutShortSection = dynamic(() => import('@/components/sections/home/AboutShortSection'));
+const FeaturedServicesSection = dynamic(() => import('@/components/sections/home/FeaturedServicesSection'));
+const FeaturedProjectsSection = dynamic(() => import('@/components/sections/home/FeaturedProjectsSection'));
+const TestimonialsSection = dynamic(() => import('@/components/sections/home/TestimonialsSection'));
+const FinalCTASection = dynamic(() => import('@/components/sections/home/FinalCTASection'));
 
 // export const metadata: Metadata = { // Metadata should be handled in layout or generated dynamically for client components if needed
 //   title: 'Beranda',
